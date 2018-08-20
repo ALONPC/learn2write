@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>When you write something, but it's a complete shit show</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<h1>When you write something, but it's a complete shit show</h1>
+	<h5>Your word: </h5><input id="word" type="" name="">
+	<h5>Your word, but messed up: </h5><input id="shuffledWord" type="" name="" disabled>
+	<br>
+	<br>
+	<div class="wrapper"><button id="reset"></button></div>
+	<br>
+	<div class="wrapper">fuck go back</div>
+
+
+	<script src="main.js"></script>
+	<script>
+		
+		$("#reset").click(function(){
+			if($("#word").val() == ''){
+				alert("There's no need to go back lol");
+			} else {
+				$("#word").val('');
+				$("#shuffledWord").val('');
+
+			}
+		});
+
+		var count = 0;
+
+		$("#word").on('keydown', function(e){
+			
+			if(e.which == 8){
+				
+				e.preventDefault();
+				count++;
+			
+				switch (count){
+					case 1:
+						alert("Backspace is working but not allowed");
+						break;
+					case 2:
+						alert("If you want so hard to delete, then press the red button");
+						break;
+					case 3:
+						alert("See the huge ass red button? THEN PRESS IT");
+						break;
+					case 4:
+						alert("HOLY SHIT YOU BLIND INSECT, I'LL DO IT FOR YOU");
+						$("#reset").trigger('click');
+						location.reload();
+						break;
+				}
+			} else {
+				var yourWord = $("#word").val();
+				var yourWordConverted = splitString(yourWord);
+				var yourWordButMessedUp = shuffleArray(yourWordConverted);
+				$("#shuffledWord").val(yourWordButMessedUp);
+			}
+		});
+	</script>
+
+</body>
+</html>
